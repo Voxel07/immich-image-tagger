@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Photo location review · Immich GPX Tagger</title>
+  <link rel="stylesheet" href="leaflet.css">
+  <link rel="stylesheet" href="map.css">
+  <script defer src="leaflet.js"></script>
+  <script defer src="map.js"></script>
+</head>
+<body>
+  <header>
+    <div><p class="eyebrow">IMMICH GPX TAGGER / LOCATION REVIEW</p><h1 id="album">Photo locations</h1></div>
+    <div class="header-actions"><span id="connection">Loading local preview…</span><button id="fit">Fit all locations</button></div>
+  </header>
+  <div id="stale" hidden>Matching settings have changed. Run step 2 again before applying these locations.</div>
+  <section class="summary" aria-label="Matching summary">
+    <div><strong id="matched">0</strong><span>Matched</span></div>
+    <div><strong id="skipped">0</strong><span>Skipped</span></div>
+    <div><strong id="unmatched">0</strong><span>No GPX match</span></div>
+    <div><strong id="errors">0</strong><span>Errors</span></div>
+    <p>Review only. Apply or exclude photos in the desktop app.</p>
+  </section>
+  <main>
+    <aside>
+      <div class="filters"><label for="search">Find a photo</label><input id="search" type="search" placeholder="Search filenames…"><label for="filter">Show</label><select id="filter"><option value="all">All photos</option><option value="matched">Matched photos</option><option value="skipped">Skipped photos</option><option value="unmatched">No GPX match</option><option value="errors">Errors</option><option value="excluded">Excluded</option></select><p id="list-count"></p></div>
+      <div id="photos" aria-label="Photos"></div>
+    </aside>
+    <section class="map-area" aria-label="Photo location map">
+      <div id="map"></div>
+      <div class="map-tools"><label><input id="routes" type="checkbox" checked> GPX tracks</label><button id="basemap">Hide street map</button></div>
+      <div id="empty" hidden>No locations to show. Unmatched photos are listed without a guessed position.</div>
+      <div id="tile-warning" hidden>Street map unavailable. Photo locations and GPX tracks still work. Check your internet connection.</div>
+      <div class="legend"><span><i class="proposed"></i> Proposed / updated</span><span><i class="existing"></i> Existing GPS</span><span><i class="excluded"></i> Excluded</span><span><i class="failed"></i> Error</span><span><i class="track"></i> GPX track</span></div>
+    </section>
+  </main>
+  <footer>Locations and photos are served only by the local app. Street-map tiles load from OpenStreetMap. Keep the desktop app open.</footer>
+</body>
+</html>
